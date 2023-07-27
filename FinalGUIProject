@@ -1,0 +1,72 @@
+import tkinter as tk
+from tkinter import ttk
+#Setting the price and size for the Tiny Dice. 
+def premadeTiny():
+  price= 5
+  size = 'Tiny'
+  #Getting color from combobox
+  color= str(var.get())
+  #Printing item description and price
+  print("The price of your ",color, size, " dice will be $",price)
+#Setting the Price and Size for Regular Dice
+def premadeReg():
+  price= 10
+  size= 'Regular'
+  #Getting Color from combobox
+  color= str(var.get())
+  #Printing item description and price
+  print("The price of your ",color, size, " dice will be $",price)
+#Setting the Price and Size for Jumbo Dice
+def premadeJumbo():
+  price= 15
+  size= 'Jumbo'
+  #Getting color from combobox
+  color= str(var.get())
+  #Printing item description and price
+  print("The price of your ",color, size, " dice will be $",price)
+#Creating the Add to Cart Page
+def addToCart():
+  root = tk.Tk()
+  root.geometry("500x900")
+  root.title("Hooray!")
+  #Label for main message
+  label = tk.Label(root, text="Your item has been added \n to your cart!", font=('Times New Roman',14))
+  label.place(x=100, y=10)
+  #Button to return back to Premade page
+  btn = tk.Button(root, text= "Awesome!", font=('Arial',8), command= root.destroy)
+  btn.place(x=200, y=200)
+#Premade Dice Page Creation
+root = tk.Tk()
+root.geometry("500x900")
+root.title("The Dragon's Dice Hoard")
+#Creating Page Header Label
+label1 = tk.Label(root, text="This is the premade dice section!", font=('Times New Roman', 16))
+label1.grid(padx=60,pady=10)
+#Creating Size Label
+label2 = tk.Label(root, text="Please Select Your Size: ", font=('Arial', 10))
+label2.grid(padx=10, pady=5)
+#Creating Color Label
+label3 = tk.Label(root, text="Please Select Your Color", font=('Arial, 10'))
+label3.grid(padx=20, pady=100)
+#Button for Tiny dice and calling premadeTiny 
+t_btn = tk.Button(root, text="Tiny: 10mm", font=('Arial',8), command= premadeTiny)
+t_btn.place(x=20, y=90)
+#Button for Regular dice and calling premadeReg
+r_btn = tk.Button(root, text="Regular: 20mm", font=('Arial',8), command= premadeReg)
+r_btn.place(x=170, y=90)
+#Button for Jumbo dice and calling premadeJumbo
+j_btn = tk.Button(root, text="Jumbo: 30mm", font=('Arial',8), command= premadeJumbo)
+j_btn.place(x=350, y=90)
+#Color Combobox Creation. List of colors
+color_list= ("Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Pink", "White", "Grey", "Black", "Random")
+var= tk.StringVar() #type of variable saved
+c1= ttk.Combobox(root, textvariable= var) #creating the variable to call
+c1['values']= color_list
+c1['state']= 'readonly' #makes sure no one can edit the colors
+c1.place(x= 160, y=210)
+#Button to Add item to cart and opens add to cart screen
+cart_btn = tk.Button(root, text="Add to Cart", font=('Arial',8), command= addToCart)
+cart_btn.place(x=415, y=275)
+#Button to exit the program
+btn = tk.Button(root, text="Back to Main Page", font=("Arial", 8), command = root.destroy)
+btn.place(x=1, y=275)
